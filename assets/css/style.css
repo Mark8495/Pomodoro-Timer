@@ -152,13 +152,6 @@ input[type=number] {
 }
 
 
-
-
-
-
-
-
-
 /* Task List */
 #task-container{
     height: 35vh;
@@ -166,6 +159,9 @@ input[type=number] {
     width: 400px;
     max-width: 100%;
     margin-top: 7.5vh;
+    
+}
+#task-container h1{
     text-align: center;
 }
 
@@ -180,6 +176,7 @@ input[type=number] {
     font-size: 2.5rem;
     margin: auto;
     position: relative;
+    
 }
 #addTask{
     border: 1px solid black;
