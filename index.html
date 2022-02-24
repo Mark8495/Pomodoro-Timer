@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +12,7 @@
     <!-- Website Header and settings modal -->
     <header>
         <h1>Pomodoro Timer</h1>
-        <h2 id="openSettings">Settings</h2>
+        <h2 id="openSettings"><i class="fa fa-solid fa-gear"></i></h2>
     </header>
     <!-- settings modal -->
     <div id="myModal" class="modal">
@@ -44,20 +45,20 @@
         </div>
         <div id="buttons">
             <!-- start and stop button -->
-            <button id="start" class="btn startButton">Start</button>
+            <button id="start" class="btn"><i class="fa fa-solid fa-play"></i></button>
             <!-- reset Button -->
-            <button id="reset" class="'btn">reset</button>
+            <button id="reset" class="btn"><i class="fas fa-redo"></i></button>
         </div>
     </div>
 
     <div id="task-container">
         <h1>Task List</h1>
         <div class="task">
-            <input type="text" id="taskField" ><button id="addTask">+</button>>
+            <input type="text" id="taskField" ><button id="addTask">+</button>
         </div>
         <div class="task">
             <ul id="tasklist">
-                
+
             </ul>
         </div>
 
@@ -65,5 +66,6 @@
 
 
     <script src="assets/js/script.js"></script>
+    <script src="https://kit.fontawesome.com/05612a3754.js" crossorigin="anonymous"></script>
 </body>
 </html>
