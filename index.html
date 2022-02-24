@@ -16,7 +16,9 @@
     <!-- settings modal -->
     <div id="myModal" class="modal">
         <div class="modal-content">
+            <!-- close button -->
             <span class="close">&times;</span>
+            <!-- Timer Settings -->
             <h2>Timer Settings</h2>
             <h3>Time(minutes)</h3>
             <hr>
@@ -28,7 +30,37 @@
             <input type="button" id="submitBreakL" value="+">
         </div>
     </div>
+    <div id="pomo-container">
+        <!-- Timer Mode -->
+        <div id="mode">
+            <ul>
+                <li id='workMode' class="active mode">Work</li>
+                <li id="breakMode" class="mode">Break</li>
+            </ul>
+            <hr>
+        </div>
+        <div id="timer" class="timer">
+            <p><span id="timerMin">25</span>:<span id="timerSec">00</span></p>
+        </div>
+        <div id="buttons">
+            <!-- start and stop button -->
+            <button id="start" class="btn startButton">Start</button>
+            <!-- reset Button -->
+            <button id="reset" class="'btn">reset</button>
+        </div>
+    </div>
 
+    <div id="task-container">
+        <h1>Task List</h1>
+        <div class="task">
+            <input type="text" id="taskField" ><button id="addTask">+</button>>
+        </div>
+        <div class="task">
+            <ul id="tasklist">
+            </ul>
+        </div>
+
+    </div>
 
 
     <script src="assets/js/script.js"></script>
