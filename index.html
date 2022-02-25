@@ -22,13 +22,20 @@
             <!-- Timer Settings -->
             <h2>Timer Settings</h2>
             <h3>Time(minutes)</h3>
+            <h4>Please input a time between 5 and 60 minutes</h4>
             <hr>
             <h2>Pomodoro Timer</h2>
             <input id="pomoLength" type="number" min="5" max="60">
-            <input type="button" id="submitPomoL" value="+">
+            <button id="submitPomoL" class="modalBtn"><i class="fa fal fa-plus"></i></button>
             <h2>Break Timer</h2>
             <input id="breakLength" type="number" min="5" max="60">
-            <input type="button" id="submitBreakL" value="+">
+            <button id="submitBreakL" class="modalBtn"><i class="fa fal fa-plus"></i></button>
+            <p>Warning any changes will reset the timer!</p>
+            <hr>
+            <h2>Task List</h2>
+            <p>Click the plus sign, or press enter to add your task.</p>
+            <p>To show your task is completed. Click on the task. To remove the task just double click.</p>
+            
         </div>
     </div>
     <div id="pomo-container">
@@ -54,7 +61,7 @@
     <div id="task-container">
         <h1>Task List</h1>
         <div class="task">
-            <input type="text" id="taskField" ><button id="addTask">+</button>
+            <input type="text" id="taskField"><button id="addTask"><i class="fa fal fa-plus"></i></button>
         </div>
         <div class="task">
             <ul id="taskList">

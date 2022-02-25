@@ -82,7 +82,6 @@ let backCounter = 1;
 let remainSeconds = 5
 
 
-
 start.addEventListener('click', function () {
     if (startTimer === undefined) {
         startTimer = setInterval(timer, 1000)
@@ -96,30 +95,47 @@ start.addEventListener('click', function () {
 
 })
 
+function workReset(){
+    breakMode.classList.remove('active')
+    workMode.classList.add('active')
+    clearInterval(startTimer)
+    startTimer = undefined
+    start.innerHTML = '<i class="fa fa-solid fa-play"></i>'
+    timerSec.textContent = '00'
+}
 
 pomoButton.addEventListener('click', function () {
     pomoLTime = pomoL.value
+    if (pomoLTime < 5 || pomoLTime > 60){
+        alert('Time length not valid, Please input a time between 5 and 60')
+        pomoLTime = 25
+    }
     remainSeconds = pomoLTime * 60
     timerMin.textContent = pomoLTime 
     if (timerMin.textContent <= 9) {
         timerMin.textContent = `0${timerMin.textContent}`
     }
-    breakMode.classList.remove('active')
-    workMode.classList.add('active')
-    clearInterval(startTimer)
-    startTimer = undefined
-    start.innerHTML = '<i class="fa fa-solid fa-play"></i>'
-    timerSec.textContent = '00'
+    workReset()
+    // breakMode.classList.remove('active')
+    // workMode.classList.add('active')
+    // clearInterval(startTimer)
+    // startTimer = undefined
+    // start.innerHTML = '<i class="fa fa-solid fa-play"></i>'
+    // timerSec.textContent = '00'
 })
 
 breakButton.addEventListener('click', function () {
     breakLTime = breakL.value
-    breakMode.classList.remove('active')
-    workMode.classList.add('active')
-    clearInterval(startTimer)
-    startTimer = undefined
-    start.innerHTML = '<i class="fa fa-solid fa-play"></i>'
-    timerSec.textContent = '00'
+    if (breakLTime < 5 || breakLTime > 60){
+        alert('Time length not valid, Please input a time between 5 and 60')
+        breakLTime = 5
+    }
+    workReset()
+    timerMin.textContent = pomoLTime
+    // clearInterval(startTimer)
+    // startTimer = undefined
+    // start.innerHTML = '<i class="fa fa-solid fa-play"></i>'
+    // timerSec.textContent = '00'
 })
 
 reset.addEventListener('click', function () {
@@ -129,11 +145,12 @@ reset.addEventListener('click', function () {
     }
     timerSec.textContent = '00'
     remainSeconds = pomoLTime * 60
-    clearInterval(startTimer)
-    startTimer = undefined
-    breakMode.classList.remove('active')
-    workMode.classList.add('active')
-    start.innerHTML = '<i class="fa fa-solid fa-play"></i>'
+    workReset()
+    // clearInterval(startTimer)
+    // startTimer = undefined
+    // breakMode.classList.remove('active')
+    // workMode.classList.add('active')
+    // start.innerHTML = '<i class="fa fa-solid fa-play"></i>'
 })
 workMode.addEventListener('click', function () {
     remainSeconds = pomoLTime * 60
@@ -141,12 +158,13 @@ workMode.addEventListener('click', function () {
     if (timerMin.textContent <= 9) {
         timerMin.textContent = `0${timerMin.textContent}`
     }
-    breakMode.classList.remove('active')
-    workMode.classList.add('active')
-    clearInterval(startTimer)
-    startTimer = undefined
-    start.innerHTML = '<i class="fa fa-solid fa-play"></i>'
-    timerSec.textContent = '00'
+    workReset()
+    // breakMode.classList.remove('active')
+    // workMode.classList.add('active')
+    // clearInterval(startTimer)
+    // startTimer = undefined
+    // start.innerHTML = '<i class="fa fa-solid fa-play"></i>'
+    // timerSec.textContent = '00'
 })
 
 breakMode.addEventListener('click', function () {
@@ -155,12 +173,13 @@ breakMode.addEventListener('click', function () {
     if (timerMin.textContent <= 9) {
         timerMin.textContent = `0${timerMin.textContent}`
     }
+    workReset()
     workMode.classList.remove('active')
     breakMode.classList.add('active')
-    clearInterval(startTimer)
-    startTimer = undefined
-    start.innerHTML = '<i class="fa fa-solid fa-play"></i>'
-    timerSec.textContent = '00'
+    // clearInterval(startTimer)
+    // startTimer = undefined
+    // start.innerHTML = '<i class="fa fa-solid fa-play"></i>'
+    // timerSec.textContent = '00'
 })
 
 
