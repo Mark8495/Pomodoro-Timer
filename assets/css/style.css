@@ -47,7 +47,7 @@ h1, h2{
    border: 1px solid #888;
    width: 80%; /* Could be more or less, depending on screen size */
    text-align: center;
-   font-size: 130%;
+   font-size: 1.2rem;
 }
 
 .close {
@@ -203,4 +203,5 @@ input[type=number] {
     margin: 0;
     cursor: pointer;
     font-size: 2rem;
+    
 }

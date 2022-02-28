@@ -43,6 +43,7 @@ function createTask() {
     taskField.value = '';
     task.addEventListener('click', function () {
         task.style.textDecoration = 'line-through'
+        task.style.color = 'grey'
     })
     task.addEventListener('dblclick', function () {
         taskList.removeChild(task);
