@@ -30,36 +30,106 @@ window.onclick = function (event) {
 // Task List Input button
 let addTask = document.getElementById('addTask')
 // The storage list for tasks
-let taskList = document.getElementById('taskList')
+let taskListShow = document.getElementById('taskList')
 // Task list Input field
 let taskField = document.getElementById('taskField')
+let localItems = JSON.parse(localStorage.getItem('localItem'))
 
 // The method to create the tasks
 function createTask() {
-    let task = document.createElement('li');
-    task.classList.add('paragraph-styling');
-    task.textContent = taskField.value;
-    taskList.appendChild(task);
+    if (localItems === null) {
+        taskList = []
+    } else {
+        taskList = localItems;
+    }
+    taskList.push(taskField.value)
+    localStorage.setItem('localItem', JSON.stringify(taskList))
+    console.log(localStorage)
+    showList()
     taskField.value = '';
-    task.addEventListener('click', function () {
-        task.style.textDecoration = 'line-through'
-        task.style.color = 'grey'
-    })
-    task.addEventListener('dblclick', function () {
-        taskList.removeChild(task);
-    })
-    
+    // let taskP = document.getElementById('taskP')
+    // taskP.addEventListener('click', function () {
+    //     taskP.style.textDecoration = 'line-through'
+    //     taskP.style.color = 'grey'
+    // })
+    // taskP.addEventListener('dblclick', function (index) {
+    //     let localItems = JSON.parse(localStorage.getItem('localItem'))
+    //     taskList.splice(index ,1)
+    //     localStorage.setItem('localItem', JSON.stringify(taskList))
+    //     showList()
+    // })
 }
+showList()
+
+function showList() {
+    let outPut = '';
+    let localItems = JSON.parse(localStorage.getItem('localItem'))
+    if (localItems === null) {
+        taskList = []
+    } else {
+        taskList = localItems;
+    }
+    taskList.forEach((data, index) => {
+        outPut += `<p id=taskP>${data}</p>`
+    });
+    taskListShow.innerHTML = outPut
+}
+
+{/* <button id="remove" onclick='deleteItem(${index})>&times;</button> */}
 document.addEventListener('keydown', function (e) {
     if (e.key === 'Enter') {
         if (taskField.value == '') {
             return
-        } else (
+        } else(
             createTask()
         )
     }
+
 })
-addTask.addEventListener('click', createTask)
+
+
+addTask.addEventListener('click', function () {
+    if (taskField.value == '') {
+        return
+    } else(
+        createTask()
+    )
+})
+// To allow controls when the page reloads
+if(localItems === null){
+    localItems = null
+}else{
+    let taskP = document.getElementById('taskP')
+    taskP.addEventListener('click', function () {
+        taskP.style.textDecoration = 'line-through'
+        taskP.style.color = 'grey'
+    })
+    taskP.addEventListener('dblclick', function (index) {
+        let localItems = JSON.parse(localStorage.getItem('localItem'))
+        taskList.splice(index, 1)
+        localStorage.setItem('localItem', JSON.stringify(taskList))
+        showList()
+    })
+}
+// function deleteItem(index){
+//     let localItems = JSON.parse(localStorage.getItem('localItem'))
+//         taskList.splice(index, 1)
+//         localStorage.setItem('localItem', JSON.stringify(taskList))
+//         showList()
+// }
+
+
+
+localStorage.clear()
+
+
+
+
+
+
+
+
+
 
 
 // Pomodoro Timer
@@ -96,7 +166,7 @@ start.addEventListener('click', function () {
 
 })
 
-function workReset(){
+function workReset() {
     breakMode.classList.remove('active')
     workMode.classList.add('active')
     clearInterval(startTimer)
@@ -107,12 +177,12 @@ function workReset(){
 
 pomoButton.addEventListener('click', function () {
     pomoLTime = pomoL.value
-    if (pomoLTime < 5 || pomoLTime > 60){
+    if (pomoLTime < 5 || pomoLTime > 60) {
         alert('Time length not valid, Please input a time between 5 and 60')
         pomoLTime = 25
     }
     remainSeconds = pomoLTime * 60
-    timerMin.textContent = pomoLTime 
+    timerMin.textContent = pomoLTime
     if (timerMin.textContent <= 9) {
         timerMin.textContent = `0${timerMin.textContent}`
     }
@@ -127,7 +197,7 @@ pomoButton.addEventListener('click', function () {
 
 breakButton.addEventListener('click', function () {
     breakLTime = breakL.value
-    if (breakLTime < 5 || breakLTime > 60){
+    if (breakLTime < 5 || breakLTime > 60) {
         alert('Time length not valid, Please input a time between 5 and 60')
         breakLTime = 5
     }
@@ -140,7 +210,7 @@ breakButton.addEventListener('click', function () {
 })
 
 reset.addEventListener('click', function () {
-    timerMin.textContent = pomoLTime 
+    timerMin.textContent = pomoLTime
     if (timerMin.textContent <= 9) {
         timerMin.textContent = `0${timerMin.textContent}`
     }
@@ -155,7 +225,7 @@ reset.addEventListener('click', function () {
 })
 workMode.addEventListener('click', function () {
     remainSeconds = pomoLTime * 60
-    timerMin.textContent = pomoLTime 
+    timerMin.textContent = pomoLTime
     if (timerMin.textContent <= 9) {
         timerMin.textContent = `0${timerMin.textContent}`
     }
@@ -170,7 +240,7 @@ workMode.addEventListener('click', function () {
 
 breakMode.addEventListener('click', function () {
     remainSeconds = breakLTime * 60
-    timerMin.textContent = breakLTime 
+    timerMin.textContent = breakLTime
     if (timerMin.textContent <= 9) {
         timerMin.textContent = `0${timerMin.textContent}`
     }
@@ -184,7 +254,7 @@ breakMode.addEventListener('click', function () {
 })
 
 
-function timer(){
+function timer() {
     timerSec.textContent = ((remainSeconds % 60))
     timerMin.textContent = Math.floor(remainSeconds / 60)
     remainSeconds--;
@@ -194,20 +264,20 @@ function timer(){
     if (timerMin.textContent <= 9) {
         timerMin.textContent = `0${timerMin.textContent}`
     }
-    if(remainSeconds == -1 && backCounter != 0){
+    if (remainSeconds == -1 && backCounter != 0) {
         alert('Good Work, You deserve a break!')
-        remainSeconds = breakLTime 
+        remainSeconds = breakLTime
         backCounter--;
         workMode.classList.remove('active')
         breakMode.classList.add('active')
-    }else if(remainSeconds == -1 && backCounter == 0){
+    } else if (remainSeconds == -1 && backCounter == 0) {
         remainSeconds = 5
         breakMode.classList.remove('active')
         workMode.classList.add('active')
         backCounter++;
-        if(counter == 1){
+        if (counter == 1) {
             alert(`You have finished ${counter} cycle. Keep going you are doing great!`)
-        }else{
+        } else {
             alert(`You have finished ${counter} cycles. Keep going you are doing great!`)
         }
         counter++;
