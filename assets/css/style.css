@@ -205,3 +205,25 @@ input[type=number] {
     font-size: 2rem;
     
 }
+
+.taskRemove{
+   float: right;
+   font-weight: bold;
+   margin-left: 20px;
+   font-size: 200%;
+}
+.taskDiv{
+    border: solid 1px black;
+    height: fit-content;
+    margin: 0;
+    padding: 0;
+    height: fit-content;
+    width: fit-content;
+    display: flex;
+}
+
+.taskDiv p {
+    padding: 0;
+    margin: 0;
+    width: fit-content;
+}

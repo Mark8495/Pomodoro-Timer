@@ -33,10 +33,12 @@ let addTask = document.getElementById('addTask')
 let taskListShow = document.getElementById('taskList')
 // Task list Input field
 let taskField = document.getElementById('taskField')
-let localItems = JSON.parse(localStorage.getItem('localItem'))
+
+
 
 // The method to create the tasks
 function createTask() {
+    let localItems = JSON.parse(localStorage.getItem('localItem'))
     if (localItems === null) {
         taskList = []
     } else {
@@ -44,24 +46,15 @@ function createTask() {
     }
     taskList.push(taskField.value)
     localStorage.setItem('localItem', JSON.stringify(taskList))
-    console.log(localStorage)
-    showList()
     taskField.value = '';
-    // let taskP = document.getElementById('taskP')
-    // taskP.addEventListener('click', function () {
-    //     taskP.style.textDecoration = 'line-through'
-    //     taskP.style.color = 'grey'
-    // })
-    // taskP.addEventListener('dblclick', function (index) {
-    //     let localItems = JSON.parse(localStorage.getItem('localItem'))
-    //     taskList.splice(index ,1)
-    //     localStorage.setItem('localItem', JSON.stringify(taskList))
-    //     showList()
-    // })
+    
+    showList()
+    
 }
 showList()
 
 function showList() {
+    
     let outPut = '';
     let localItems = JSON.parse(localStorage.getItem('localItem'))
     if (localItems === null) {
@@ -70,12 +63,21 @@ function showList() {
         taskList = localItems;
     }
     taskList.forEach((data, index) => {
-        outPut += `<p id=taskP>${data}</p>`
+        outPut += `<div class="taskDiv">
+        <p>${data}</p>
+        <button class="taskRemove" onclick="deleteItem(${index})">&times;</button>
+        </div>`
     });
     taskListShow.innerHTML = outPut
 }
 
-{/* <button id="remove" onclick='deleteItem(${index})>&times;</button> */}
+function deleteItem(index){
+    let localItems = JSON.parse(localStorage.getItem('localItem'))
+    taskList.splice(index, 1)
+    localStorage.setItem('localItem', JSON.stringify(taskList))
+    showList()
+}
+/* <button id="remove" onclick='deleteItem(${index})>&times;</button> */
 document.addEventListener('keydown', function (e) {
     if (e.key === 'Enter') {
         if (taskField.value == '') {
@@ -95,32 +97,10 @@ addTask.addEventListener('click', function () {
         createTask()
     )
 })
-// To allow controls when the page reloads
-if(localItems === null){
-    localItems = null
-}else{
-    let taskP = document.getElementById('taskP')
-    taskP.addEventListener('click', function () {
-        taskP.style.textDecoration = 'line-through'
-        taskP.style.color = 'grey'
-    })
-    taskP.addEventListener('dblclick', function (index) {
-        let localItems = JSON.parse(localStorage.getItem('localItem'))
-        taskList.splice(index, 1)
-        localStorage.setItem('localItem', JSON.stringify(taskList))
-        showList()
-    })
-}
-// function deleteItem(index){
-//     let localItems = JSON.parse(localStorage.getItem('localItem'))
-//         taskList.splice(index, 1)
-//         localStorage.setItem('localItem', JSON.stringify(taskList))
-//         showList()
-// }
 
 
 
-localStorage.clear()
+
 
 
 
