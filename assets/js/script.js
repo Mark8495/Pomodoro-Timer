@@ -64,12 +64,29 @@ function showList() {
     }
     taskList.forEach((data, index) => {
         outPut += `<div class="taskDiv">
-        <p>${data}</p>
+        <button class="checkbox" onclick="checkOffTask()"><i class="fas fa-check"></i></button>
+        <p id="checkOff">${data}</p>
+        <button onclick="taskUp(${index})"><i class="fas fa-arrow-up"></i></button>
+        <button onclick="taskDown(${index})"><i class="fas fa-arrow-down"></i></button>
         <button class="taskRemove" onclick="deleteItem(${index})">&times;</button>
         </div>`
     });
     taskListShow.innerHTML = outPut
 }
+
+function taskDown(index){
+    
+}
+
+function checkOffTask(){
+    let taskDiv = document.getElementsByClassName(taskDiv)
+    taskDiv.style.color = red
+    // let checkOff = document.getElementById('checkOff')
+    // let checkOffT = checkOff.textContent
+    // checkOffT.style.textdecoration = 'line-through'
+    
+}
+
 
 function deleteItem(index){
     let localItems = JSON.parse(localStorage.getItem('localItem'))
@@ -86,7 +103,8 @@ document.addEventListener('keydown', function (e) {
             createTask()
         )
     }
-
+    taskField.focus()
+    taskField.select()
 })
 
 
@@ -96,6 +114,8 @@ addTask.addEventListener('click', function () {
     } else(
         createTask()
     )
+    taskField.focus()
+    taskField.select()
 })
 
 
@@ -134,6 +154,7 @@ let remainSeconds = 5
 
 
 start.addEventListener('click', function () {
+    
     if (startTimer === undefined) {
         startTimer = setInterval(timer, 1000)
         start.innerHTML = '<i class="fas fa-pause"></i>'
@@ -143,7 +164,7 @@ start.addEventListener('click', function () {
         start.innerHTML = '<i class="fa fa-solid fa-play"></i>'
     }
 
-
+    remainSeconds--
 })
 
 function workReset() {
@@ -161,7 +182,7 @@ pomoButton.addEventListener('click', function () {
         alert('Time length not valid, Please input a time between 5 and 60')
         pomoLTime = 25
     }
-    remainSeconds = pomoLTime * 60
+    remainSeconds = (pomoLTime * 60) -1
     timerMin.textContent = pomoLTime
     if (timerMin.textContent <= 9) {
         timerMin.textContent = `0${timerMin.textContent}`
@@ -246,12 +267,12 @@ function timer() {
     }
     if (remainSeconds == -1 && backCounter != 0) {
         alert('Good Work, You deserve a break!')
-        remainSeconds = breakLTime
+        remainSeconds = breakLTime * 60
         backCounter--;
         workMode.classList.remove('active')
         breakMode.classList.add('active')
     } else if (remainSeconds == -1 && backCounter == 0) {
-        remainSeconds = 5
+        remainSeconds = pomoLTime
         breakMode.classList.remove('active')
         workMode.classList.add('active')
         backCounter++;

@@ -25,10 +25,10 @@
             <h4>Please input a time between 5 and 60 minutes</h4>
             <hr>
             <h2>Pomodoro Timer</h2>
-            <input id="pomoLength" type="number" min="5" max="60">
+            <input id="pomoLength" type="number" min="5" max="60" placeholder="25">
             <button id="submitPomoL" class="modalBtn"><i class="fa fal fa-plus"></i></button>
             <h2>Break Timer</h2>
-            <input id="breakLength" type="number" min="5" max="60">
+            <input id="breakLength" type="number" min="5" max="60" placeholder="5">
             <button id="submitBreakL" class="modalBtn"><i class="fa fal fa-plus"></i></button>
             <p>Warning: Any changes will reset the timer!</p>
             <hr>
@@ -62,7 +62,7 @@
     <div id="task-container">
         <h1>Task List</h1>
         <div class="task">
-            <input type="text" id="taskField"><button id="addTask"><i class="fa fal fa-plus"></i></button>
+            <input type="text" id="taskField" placeholder="Add task here"><button id="addTask"><i class="fa fal fa-plus"></i></button>
         </div>
         
             <div id="taskList">
