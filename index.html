@@ -59,7 +59,7 @@
         </div>
     </div>
 
-    <div id="task-container">
+    <!-- <div id="task-container">
         <h1>Task List</h1>
         <div class="task">
             <input type="text" id="taskField" placeholder="Add task here"><button id="addTask"><i class="fa fal fa-plus"></i></button>
@@ -70,12 +70,27 @@
             </div>
         
 
+    </div> -->
+    <div class="task-list-container">
+        <h1>Task List</h1>
+        <form>
+            <input type="text" class="task-input" maxlength="50">
+            <button class="task-button" type="submit"><i class="fas fa-plus-circle"></i></button>
+            <div class="select">
+                <select name="tasks" class="filter-tasks">
+                    <option value="all">All</option>
+                    <option value="done">Finished</option>
+                    <option value="todo">Todo</option>
+                </select>
+            </div>
+        </form>
+        <div class="task-container">
+            <ul class="task-list">
+
+            </ul>
+        </div>
     </div>
-
-    <footer>
-        
-
-    </footer>
+    
     <script src="assets/js/script.js"></script>
     <script src="https://kit.fontawesome.com/05612a3754.js" crossorigin="anonymous"></script>
 </body>

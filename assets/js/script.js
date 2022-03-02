@@ -26,113 +26,8 @@ window.onclick = function (event) {
 }
 
 
-// Task List
-// Task List Input button
-let addTask = document.getElementById('addTask')
-// The storage list for tasks
-let taskListShow = document.getElementById('taskList')
-// Task list Input field
-let taskField = document.getElementById('taskField')
-
-
-
-// The method to create the tasks
-function createTask() {
-    let localItems = JSON.parse(localStorage.getItem('localItem'))
-    if (localItems === null) {
-        taskList = []
-    } else {
-        taskList = localItems;
-    }
-    taskList.push(taskField.value)
-    localStorage.setItem('localItem', JSON.stringify(taskList))
-    taskField.value = '';
-    
-    showList()
-    
-}
-showList()
-
-function showList() {
-    
-    let outPut = '';
-    let localItems = JSON.parse(localStorage.getItem('localItem'))
-    if (localItems === null) {
-        taskList = []
-    } else {
-        taskList = localItems;
-    }
-    taskList.forEach((data, index) => {
-        outPut += `<div class="taskDiv">
-        <button class="checkbox" onclick="checkOffTask()"><i class="fas fa-check"></i></button>
-        <p id="checkOff">${data}</p>
-        <button onclick="taskUp(${index})"><i class="fas fa-arrow-up"></i></button>
-        <button onclick="taskDown(${index})"><i class="fas fa-arrow-down"></i></button>
-        <button class="taskRemove" onclick="deleteItem(${index})">&times;</button>
-        </div>`
-    });
-    taskListShow.innerHTML = outPut
-}
-
-function taskDown(index){
-    
-}
-
-function checkOffTask(){
-    let taskDiv = document.getElementsByClassName(taskDiv)
-    taskDiv.style.color = red
-    // let checkOff = document.getElementById('checkOff')
-    // let checkOffT = checkOff.textContent
-    // checkOffT.style.textdecoration = 'line-through'
-    
-}
-
-
-function deleteItem(index){
-    let localItems = JSON.parse(localStorage.getItem('localItem'))
-    taskList.splice(index, 1)
-    localStorage.setItem('localItem', JSON.stringify(taskList))
-    showList()
-}
-/* <button id="remove" onclick='deleteItem(${index})>&times;</button> */
-document.addEventListener('keydown', function (e) {
-    if (e.key === 'Enter') {
-        if (taskField.value == '') {
-            return
-        } else(
-            createTask()
-        )
-    }
-    taskField.focus()
-    taskField.select()
-})
-
-
-addTask.addEventListener('click', function () {
-    if (taskField.value == '') {
-        return
-    } else(
-        createTask()
-    )
-    taskField.focus()
-    taskField.select()
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Pomodoro Timer
+// selectors
 let startButton = document.getElementsByClassName('startButton')
 let start = document.getElementById('start')
 let reset = document.getElementById('reset')
@@ -152,9 +47,9 @@ let counter = 1;
 let backCounter = 1;
 let remainSeconds = 5
 
-
+// event Listeners
 start.addEventListener('click', function () {
-    
+
     if (startTimer === undefined) {
         startTimer = setInterval(timer, 1000)
         start.innerHTML = '<i class="fas fa-pause"></i>'
@@ -167,14 +62,6 @@ start.addEventListener('click', function () {
     remainSeconds--
 })
 
-function workReset() {
-    breakMode.classList.remove('active')
-    workMode.classList.add('active')
-    clearInterval(startTimer)
-    startTimer = undefined
-    start.innerHTML = '<i class="fa fa-solid fa-play"></i>'
-    timerSec.textContent = '00'
-}
 
 pomoButton.addEventListener('click', function () {
     pomoLTime = pomoL.value
@@ -182,11 +69,12 @@ pomoButton.addEventListener('click', function () {
         alert('Time length not valid, Please input a time between 5 and 60')
         pomoLTime = 25
     }
-    remainSeconds = (pomoLTime * 60) -1
+    remainSeconds = (pomoLTime * 60) - 1
     timerMin.textContent = pomoLTime
     if (timerMin.textContent <= 9) {
         timerMin.textContent = `0${timerMin.textContent}`
     }
+
     workReset()
     // breakMode.classList.remove('active')
     // workMode.classList.add('active')
@@ -253,6 +141,15 @@ breakMode.addEventListener('click', function () {
     // start.innerHTML = '<i class="fa fa-solid fa-play"></i>'
     // timerSec.textContent = '00'
 })
+// Functions
+function workReset() {
+    breakMode.classList.remove('active')
+    workMode.classList.add('active')
+    clearInterval(startTimer)
+    startTimer = undefined
+    start.innerHTML = '<i class="fa fa-solid fa-play"></i>'
+    timerSec.textContent = '00'
+}
 
 
 function timer() {
@@ -283,4 +180,156 @@ function timer() {
         }
         counter++;
     }
+}
+
+
+
+
+// Task List
+// Selectors
+
+const taskInput = document.querySelector('.task-input')
+const taskButton = document.querySelector('.task-button')
+const taskList = document.querySelector('.task-list')
+const taskFilter = document.querySelector('.filter-tasks')
+
+// Event Listeners
+// document.addEventListener('DOMContentLoaded', getTasks)
+taskButton.addEventListener('click', addTask);
+taskList.addEventListener('click', deleteCheck)
+taskFilter.addEventListener('change', filterTask)
+
+// Functions
+function addTask(e) {
+    e.preventDefault();
+    // create task div
+    const taskDiv = document.createElement('div')
+    taskDiv.classList.add('task')
+    // create task Li
+    const newTask = document.createElement('li')
+    newTask.innerText = taskInput.value
+    taskDiv.appendChild(newTask)
+    // add task to local Storage
+    saveLocalTasks(taskInput.value)
+    // add finish button
+    const finishedButton = document.createElement('button')
+    finishedButton.innerHTML = '<i class="fas fa-check"></i>'
+    finishedButton.classList.add('finish-btn')
+    taskDiv.appendChild(finishedButton)
+
+    // add delete button
+    const deleteButton = document.createElement('button')
+    deletButton.innerHTML = '<i class="fas fa-trash-alt"></i>'
+    deleteButton.classList.add('delete-btn')
+    taskDiv.appendChild(deleteButton)
+    // append to list
+    taskList.appendChild(taskDiv)
+
+    // clear value
+    taskInput.value = ""
+
+
+}
+
+function deleteCheck(e) {
+    const item = e.target
+    if (item.classList[0] === 'delete-btn') {
+        const task = item.parentElement;
+        removelocaltask(task)
+        task.classList.add('fall')
+        task.addEventListener('transitionend', function () {
+            task.remove()
+        })
+
+    }
+
+    if (item.classList[0] === 'finish-btn') {
+        const task = item.parentElement;
+        task.classList.toggle('finished')
+    }
+}
+
+function filterTask(e) {
+    const task = taskList.childNodes;
+    tasks.forEach(function (task) {
+        const mStyle = task.style;
+        if (mStyle != undefined && mStyle != null) {
+            switch (e.target.value) {
+                case "all":
+                    mStyle.display = "flex";
+                    break;
+                case "completed":
+                    if (task.classList.contains('finished')) {
+                        mStyle.display = 'flex';
+                    } else {
+                        mStyle.display = "none";
+                    }
+                    break;
+                case "todo":
+                    if (task.classList.contains('finished')) {
+                        mStyle.display = 'none';
+                    } else {
+                        mStyle.display = "flex";
+                    }
+                    break;
+            }
+        }
+    })
+}
+
+function saveLocalTasks(task) {
+    // check if old tasks
+    let tasks
+    if (localStorage.getItem('tasks') === null) {
+        tasks = []
+    } else {
+        tasks = JSON.parse(localStorage.getItem('tasks'));
+    }
+    tasks.push(task);
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+
+}
+
+function getTasks() {
+    let tasks
+    if (localStorage.getItem('tasks') === null) {
+        tasks=[]
+    } else {
+        tasks = JSON.parse(localStorage.getItem('tasks'));
+    }
+    tasks.forEach(function(task){
+        const taskDiv = document.createElement('div')
+        taskDiv.classList.add('task')
+        // create task Li
+        const newTask = document.createElement('li')
+        newTask.innerText = task
+        taskDiv.appendChild(newTask)
+
+        // add finish button
+        const finishedButton = document.createElement('button')
+        finishedButton.innerHTML = '<i class="fas fa-check"></i>'
+        finishedButton.classList.add('finish-btn')
+        taskDiv.appendChild(finishedButton)
+
+        // add delete button
+        const deleteButton = document.createElement('button')
+        deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>'
+        deleteButton.classList.add('delete-btn')
+        taskDiv.appendChild(deleteButton)
+        // append to list
+        taskList.appendChild(taskDiv)
+    })
+
+}
+
+function removelocaltask(task){
+    let tasks
+    if (localStorage.getItem('tasks') === null) {
+        tasks = []
+    } else {
+        tasks = JSON.parse(localStorage.getItem('tasks'));
+    }
+    const taskIndex = task.children[0].innerText
+    tasks.splice(tasks.indexOf(taskIndex),1);
+    localStorage.setItem('tasks', JSON.stringify(task))
 }

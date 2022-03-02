@@ -1,22 +1,40 @@
+/* initial Css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: linear-gradient(110deg, red, orange);
+    height: 100vh;
+}
+
+
+
 /* Header */
-header h1{
+header h1 {
     float: left;
     margin: 0;
 }
 
-header h2{
+header h2 {
     float: right;
     margin: 0;
     margin-right: 20px;
 }
-header{
+
+header {
     height: 5vh;
     border-bottom: 2px solid black;
 }
-i{
-        font-size: 160%;
+
+i {
+    font-size: 160%;
 }
-h1, h2{
+
+h1,
+h2 {
     font-family: Arial, Helvetica, sans-serif;
     text-transform: uppercase;
     letter-spacing: 4px;
@@ -28,90 +46,105 @@ h1, h2{
 /* The Modal from w3 */
 .modal {
     /* Hidden by default */
-   display: none;
-   position: fixed; /* Stay in place */
-   z-index: 1; /* Sit on top */
-   left: 0;
-   top: 0;
-   width: 100%; /* Full width */
-   height: 100%; /* Full height */
-   overflow: auto; /* Enable scroll if needed */
-   background-color: rgb(0,0,0); /* Fallback color */
-   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    display: none;
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
 }
 
 .modal-content {
-   background-color: #fefefe;
-   margin: 15% auto; /* 15% from the top and centered */
-   padding: 20px;
-   border: 1px solid #888;
-   width: 80%; /* Could be more or less, depending on screen size */
-   text-align: center;
-   font-size: 1.2rem;
+    background-color: #fefefe;
+    margin: 15% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    /* Could be more or less, depending on screen size */
+    text-align: center;
+    font-size: 1.2rem;
 }
 
 .close {
-   color: #aaa;
-   float: right;
-   font-size: 28px;
-   font-weight: bold;
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
 }
- 
+
 .close:hover,
 .close:focus {
-   color: black;
-   text-decoration: none;
-   cursor: pointer;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
-.modalBtn{
+
+.modalBtn {
     padding: 5px;
     font-size: 1.1rem;
 }
 
-#breakLength, #pomoLength{
-   box-sizing: border-box;
-   font-size: 150%;
+#breakLength,
+#pomoLength {
+    box-sizing: border-box;
+    font-size: 150%;
 }
+
 /* Input stylings W3 */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
+
 input[type=number] {
     -moz-appearance: textfield;
-  }
+}
 
 /* Pomodoro Timer */
 
-#pomo-container{
+#pomo-container {
     margin-top: 2vh;
     height: 300px;
     width: 400px;
     max-width: 100%;
     margin: auto;
 }
-#mode{
+
+#mode {
     font-size: 130%;
     letter-spacing: 2px;
     height: 6vh;
     width: 400px;
     max-width: 100%;
     line-height: 40px;
-    
-    
+
+
 }
-#mode ul{
+
+#mode ul {
     height: 5vh;
 }
 
-#mode li{
+#mode li {
     float: left;
     list-style-type: none;
     margin-left: 20%;
 }
 
-.timer{
+.timer {
     height: 200px;
     width: 400px;
     max-width: 100%;
@@ -121,21 +154,21 @@ input[type=number] {
     margin: 0;
 }
 
-.timer p{
+.timer p {
     margin: 0;
     padding: 0;
 }
 
 
 
-.buttons{
+.buttons {
     height: 10vh;
     width: 400px;
     max-width: 100%;
     display: flex;
 }
 
-.btn{
+.btn {
     position: relative;
     margin-left: 75px;
     display: inline-block;
@@ -143,87 +176,150 @@ input[type=number] {
     border-radius: 40px;
 }
 
-.active{
+.active {
     border-bottom: 1px solid black;
     background-color: #888;
 }
-.mode:hover{
+
+.mode:hover {
     background-color: #aaa;
     transform: scale(1.2);
 }
 
-.hide{
+.hide {
     display: none;
 }
 
 
+
+
 /* Task List */
-#task-container{
-    height: 35vh;
-    margin: auto;
-    width: 400px;
-    max-width: 100%;
-    margin-top: 7.5vh;
-    
+.task-list-container{
+    border-top: solid 2px black;
+    margin-top:50px ;
 }
-#task-container h1{
-    text-align: center;
+.task-list-container h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 250%;
+}
+form{
+    min-height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form input, 
+form button{
+    padding: 0.5rem;
+    background: white;
+    cursor: pointer;
+    font-size: 1.5rem;
+    border: none;
+}
+
+form button{
+    padding: 0.3rem;
+    background: white;
+    color: red;
+    transition: all 0.2s ease;
+    font-size: 1.3rem;
+}
+
+form button:hover{
+    background: red;
+    color:white;
+}
+
+.task-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.task-list{
+    min-width: 30%;
+    list-style:none;
+    max-width: 100%;
+    width: 600px;
 }
 
 .task{
-    height: 45px;
-}
-
-#taskField{
-    width: 350px;
-    border: 1px solid ;
-    outline: none;
-    font-size: 2.5rem;
-    margin: auto;
-    position: relative;
-    
-}
-#addTask{
-    border: 1px solid black;
-    font-size: 1.4rem;
-    margin: 0;
-    text-align: center;
-    position: relative;
-    padding: 5px;
-}
-
-#taskList p{
-    font-size: 2rem;
-    align-items: left;
-    padding-top: 5px;
-}
-
-
-.paragraph-styling{
-    margin: 0;
-    cursor: pointer;
-    font-size: 2rem;
-    
-}
-
-.taskRemove{
-   float: right;
-   font-weight: bold;
-   margin-left: 20px;
-   font-size: 200%;
-}
-.taskDiv{
-    border: solid 1px black;
-    height: fit-content;
-    margin: 0;
-    padding: 0;
-    height: fit-content;
-    width: fit-content;
+    margin: 0.5rem;
+    background-color: white;
+    color: black;
+    font-size: 1.5rem;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.5s ease;
 }
 
-.taskDiv p {
-    padding: 0;
-    margin: 0;
-    width: fit-content;
+.task li{
+    flex: 1;
+    margin-left: 10px;
+}
+
+.delete-btn , .finish-btn{
+    background: red;
+    color: white;
+    border: none;
+    padding: 1rem;
+    cursor:pointer;
+    font-size: 1.2rem;
+}
+
+.finish-btn{
+    background: green;
+}
+
+.task-item{
+    padding: 0rem 0.5rem;
+}
+
+.finished{
+    opacity:0.5;
+    text-decoration: line-through;
+}
+
+.fall{
+    transform: translateY(8rem) rotateZ(15deg);
+    opacity: 0;
+}
+
+/* Style the select button */
+select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    border: none;
+}
+.select{
+    margin: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+select{
+    color: red;
+    width: 10rem;
+    cursor: pointer;
+    padding: 1rem;
+}
+.select::after {
+    content: "\25BC";
+    color: white;
+    position: absolute;
+    background: red;
+    top: 0;
+    right: 0;
+    padding: 1rem;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+.select:hover::after{
+    background:white;
+    color: red;
 }
