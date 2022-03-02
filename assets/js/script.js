@@ -194,7 +194,7 @@ const taskList = document.querySelector('.task-list')
 const taskFilter = document.querySelector('.filter-tasks')
 
 // Event Listeners
-// document.addEventListener('DOMContentLoaded', getTasks)
+document.addEventListener('DOMContentLoaded', getTasks)
 taskButton.addEventListener('click', addTask);
 taskList.addEventListener('click', deleteCheck)
 taskFilter.addEventListener('change', filterTask)
@@ -219,7 +219,7 @@ function addTask(e) {
 
     // add delete button
     const deleteButton = document.createElement('button')
-    deletButton.innerHTML = '<i class="fas fa-trash-alt"></i>'
+    deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>'
     deleteButton.classList.add('delete-btn')
     taskDiv.appendChild(deleteButton)
     // append to list
@@ -227,9 +227,11 @@ function addTask(e) {
 
     // clear value
     taskInput.value = ""
+    
 
 
 }
+console.log(localStorage)
 
 function deleteCheck(e) {
     const item = e.target
@@ -250,7 +252,7 @@ function deleteCheck(e) {
 }
 
 function filterTask(e) {
-    const task = taskList.childNodes;
+    const tasks = taskList.childNodes;
     tasks.forEach(function (task) {
         const mStyle = task.style;
         if (mStyle != undefined && mStyle != null) {
@@ -258,7 +260,7 @@ function filterTask(e) {
                 case "all":
                     mStyle.display = "flex";
                     break;
-                case "completed":
+                case "done":
                     if (task.classList.contains('finished')) {
                         mStyle.display = 'flex';
                     } else {
@@ -277,12 +279,12 @@ function filterTask(e) {
     })
 }
 
-function saveLocalTasks(task) {
+function saveLocalTasks(task){
     // check if old tasks
     let tasks
-    if (localStorage.getItem('tasks') === null) {
+    if (localStorage.getItem('tasks')===null) {
         tasks = []
-    } else {
+    }else{
         tasks = JSON.parse(localStorage.getItem('tasks'));
     }
     tasks.push(task);
@@ -298,27 +300,28 @@ function getTasks() {
         tasks = JSON.parse(localStorage.getItem('tasks'));
     }
     tasks.forEach(function(task){
-        const taskDiv = document.createElement('div')
-        taskDiv.classList.add('task')
-        // create task Li
-        const newTask = document.createElement('li')
-        newTask.innerText = task
-        taskDiv.appendChild(newTask)
+            const taskDiv = document.createElement('div');
+            taskDiv.classList.add('task');
+            // create task Li
+            const newTask = document.createElement('li');
+            newTask.innerText = task
+            taskDiv.appendChild(newTask)
 
-        // add finish button
-        const finishedButton = document.createElement('button')
-        finishedButton.innerHTML = '<i class="fas fa-check"></i>'
-        finishedButton.classList.add('finish-btn')
-        taskDiv.appendChild(finishedButton)
+            // add finish button
+            const finishedButton = document.createElement('button');
+            finishedButton.innerHTML = '<i class="fas fa-check"></i>';
+            finishedButton.classList.add('finish-btn');
+            taskDiv.appendChild(finishedButton);
 
-        // add delete button
-        const deleteButton = document.createElement('button')
-        deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>'
-        deleteButton.classList.add('delete-btn')
-        taskDiv.appendChild(deleteButton)
-        // append to list
-        taskList.appendChild(taskDiv)
-    })
+            // add delete button
+            const deleteButton = document.createElement('button');
+            deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
+            deleteButton.classList.add('delete-btn');
+            taskDiv.appendChild(deleteButton);
+            // append to list
+            taskList.appendChild(taskDiv);
+            
+        })
 
 }
 
@@ -331,5 +334,5 @@ function removelocaltask(task){
     }
     const taskIndex = task.children[0].innerText
     tasks.splice(tasks.indexOf(taskIndex),1);
-    localStorage.setItem('tasks', JSON.stringify(task))
+    localStorage.setItem('tasks', JSON.stringify(tasks))
 }
