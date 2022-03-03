@@ -348,6 +348,13 @@ select{
 
 
 /* Media Queries */
+@media(max-width: 600px){
+    .task-list{
+        width: 400px;
+    }
+}
+
+
 @media (max-width: 500px) {
     .select{
         display: none;
@@ -364,4 +371,8 @@ select{
     #sounds{
         width: 10rem;
     }
+    .task-list{
+        width: 200px;
+    }
+
 }
