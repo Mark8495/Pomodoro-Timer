@@ -202,32 +202,59 @@ taskFilter.addEventListener('change', filterTask)
 // Functions
 function addTask(e) {
     e.preventDefault();
-    // create task div
-    const taskDiv = document.createElement('div')
-    taskDiv.classList.add('task')
-    // create task Li
-    const newTask = document.createElement('li')
-    newTask.innerText = taskInput.value
-    taskDiv.appendChild(newTask)
-    // add task to local Storage
-    saveLocalTasks(taskInput.value)
-    // add finish button
-    const finishedButton = document.createElement('button')
-    finishedButton.innerHTML = '<i class="fas fa-check"></i>'
-    finishedButton.classList.add('finish-btn')
-    taskDiv.appendChild(finishedButton)
+    if (taskInput.value !== '') { 
+        const taskDiv = document.createElement('div')
+        taskDiv.classList.add('task')
+        // create task Li
+        const newTask = document.createElement('li')
+        newTask.innerText = taskInput.value
+        taskDiv.appendChild(newTask)
+        // add task to local Storage
+        saveLocalTasks(taskInput.value)
+        // add finish button
+        const finishedButton = document.createElement('button')
+        finishedButton.innerHTML = '<i class="fas fa-check"></i>'
+        finishedButton.classList.add('finish-btn')
+        taskDiv.appendChild(finishedButton)
 
-    // add delete button
-    const deleteButton = document.createElement('button')
-    deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>'
-    deleteButton.classList.add('delete-btn')
-    taskDiv.appendChild(deleteButton)
-    // append to list
-    taskList.appendChild(taskDiv)
+        // add delete button
+        const deleteButton = document.createElement('button')
+        deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>'
+        deleteButton.classList.add('delete-btn')
+        taskDiv.appendChild(deleteButton)
+        // append to list
+        taskList.appendChild(taskDiv)
 
-    // clear value
-    taskInput.value = ""
+        // clear value
+        taskInput.value = ""
+    }
     
+    // create task div
+    // const taskDiv = document.createElement('div')
+    // taskDiv.classList.add('task')
+    // // create task Li
+    // const newTask = document.createElement('li')
+    // newTask.innerText = taskInput.value
+    // taskDiv.appendChild(newTask)
+    // // add task to local Storage
+    // saveLocalTasks(taskInput.value)
+    // // add finish button
+    // const finishedButton = document.createElement('button')
+    // finishedButton.innerHTML = '<i class="fas fa-check"></i>'
+    // finishedButton.classList.add('finish-btn')
+    // taskDiv.appendChild(finishedButton)
+
+    // // add delete button
+    // const deleteButton = document.createElement('button')
+    // deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>'
+    // deleteButton.classList.add('delete-btn')
+    // taskDiv.appendChild(deleteButton)
+    // // append to list
+    // taskList.appendChild(taskDiv)
+
+    // // clear value
+    // taskInput.value = ""
+
 
 
 }
@@ -279,12 +306,12 @@ function filterTask(e) {
     })
 }
 
-function saveLocalTasks(task){
+function saveLocalTasks(task) {
     // check if old tasks
     let tasks
-    if (localStorage.getItem('tasks')===null) {
+    if (localStorage.getItem('tasks') === null) {
         tasks = []
-    }else{
+    } else {
         tasks = JSON.parse(localStorage.getItem('tasks'));
     }
     tasks.push(task);
@@ -295,37 +322,37 @@ function saveLocalTasks(task){
 function getTasks() {
     let tasks
     if (localStorage.getItem('tasks') === null) {
-        tasks=[]
+        tasks = []
     } else {
         tasks = JSON.parse(localStorage.getItem('tasks'));
     }
-    tasks.forEach(function(task){
-            const taskDiv = document.createElement('div');
-            taskDiv.classList.add('task');
-            // create task Li
-            const newTask = document.createElement('li');
-            newTask.innerText = task
-            taskDiv.appendChild(newTask)
+    tasks.forEach(function (task) {
+        const taskDiv = document.createElement('div');
+        taskDiv.classList.add('task');
+        // create task Li
+        const newTask = document.createElement('li');
+        newTask.innerText = task
+        taskDiv.appendChild(newTask)
 
-            // add finish button
-            const finishedButton = document.createElement('button');
-            finishedButton.innerHTML = '<i class="fas fa-check"></i>';
-            finishedButton.classList.add('finish-btn');
-            taskDiv.appendChild(finishedButton);
+        // add finish button
+        const finishedButton = document.createElement('button');
+        finishedButton.innerHTML = '<i class="fas fa-check"></i>';
+        finishedButton.classList.add('finish-btn');
+        taskDiv.appendChild(finishedButton);
 
-            // add delete button
-            const deleteButton = document.createElement('button');
-            deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
-            deleteButton.classList.add('delete-btn');
-            taskDiv.appendChild(deleteButton);
-            // append to list
-            taskList.appendChild(taskDiv);
-            
-        })
+        // add delete button
+        const deleteButton = document.createElement('button');
+        deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
+        deleteButton.classList.add('delete-btn');
+        taskDiv.appendChild(deleteButton);
+        // append to list
+        taskList.appendChild(taskDiv);
+
+    })
 
 }
 
-function removelocaltask(task){
+function removelocaltask(task) {
     let tasks
     if (localStorage.getItem('tasks') === null) {
         tasks = []
@@ -333,6 +360,6 @@ function removelocaltask(task){
         tasks = JSON.parse(localStorage.getItem('tasks'));
     }
     const taskIndex = task.children[0].innerText
-    tasks.splice(tasks.indexOf(taskIndex),1);
+    tasks.splice(tasks.indexOf(taskIndex), 1);
     localStorage.setItem('tasks', JSON.stringify(tasks))
 }

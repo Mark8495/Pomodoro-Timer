@@ -206,7 +206,7 @@ input[type=number] {
     font-size: 250%;
 }
 form{
-    min-height: 20vh;
+    min-height: 10vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -266,9 +266,9 @@ form button:hover{
     background: red;
     color: white;
     border: none;
-    padding: 1rem;
+    padding: .7rem;
     cursor:pointer;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .fas{
@@ -326,4 +326,12 @@ select{
 .select:hover::after{
     background:white;
     color: red;
+}
+@media (max-width: 500px) {
+    .select{
+        display: none;
+    }
+    h1{
+        letter-spacing: 1px;
+    }
 }
