@@ -31,6 +31,7 @@ window.onclick = function (event) {
 let startButton = document.getElementsByClassName('startButton')
 let start = document.getElementById('start')
 let reset = document.getElementById('reset')
+let soundChoice = document.getElementById('sounds')
 
 let pomoL = document.getElementById('pomoLength')
 let breakL = document.getElementById('breakLength')
@@ -46,6 +47,8 @@ let breakLTime = 5
 let counter = 1;
 let backCounter = 1;
 let remainSeconds = 5
+let audio = new Audio('../../assets/sounds/rooster-crow.mp3')
+
 
 // event Listeners
 start.addEventListener('click', function () {
@@ -62,6 +65,7 @@ start.addEventListener('click', function () {
     remainSeconds--
 })
 
+soundChoice.addEventListener('change', soundPlay)
 
 pomoButton.addEventListener('click', function () {
     pomoLTime = pomoL.value
@@ -74,14 +78,7 @@ pomoButton.addEventListener('click', function () {
     if (timerMin.textContent <= 9) {
         timerMin.textContent = `0${timerMin.textContent}`
     }
-
     workReset()
-    // breakMode.classList.remove('active')
-    // workMode.classList.add('active')
-    // clearInterval(startTimer)
-    // startTimer = undefined
-    // start.innerHTML = '<i class="fa fa-solid fa-play"></i>'
-    // timerSec.textContent = '00'
 })
 
 breakButton.addEventListener('click', function () {
@@ -92,10 +89,6 @@ breakButton.addEventListener('click', function () {
     }
     workReset()
     timerMin.textContent = pomoLTime
-    // clearInterval(startTimer)
-    // startTimer = undefined
-    // start.innerHTML = '<i class="fa fa-solid fa-play"></i>'
-    // timerSec.textContent = '00'
 })
 
 reset.addEventListener('click', function () {
@@ -106,11 +99,6 @@ reset.addEventListener('click', function () {
     timerSec.textContent = '00'
     remainSeconds = pomoLTime * 60
     workReset()
-    // clearInterval(startTimer)
-    // startTimer = undefined
-    // breakMode.classList.remove('active')
-    // workMode.classList.add('active')
-    // start.innerHTML = '<i class="fa fa-solid fa-play"></i>'
 })
 workMode.addEventListener('click', function () {
     remainSeconds = pomoLTime * 60
@@ -119,12 +107,7 @@ workMode.addEventListener('click', function () {
         timerMin.textContent = `0${timerMin.textContent}`
     }
     workReset()
-    // breakMode.classList.remove('active')
-    // workMode.classList.add('active')
-    // clearInterval(startTimer)
-    // startTimer = undefined
-    // start.innerHTML = '<i class="fa fa-solid fa-play"></i>'
-    // timerSec.textContent = '00'
+
 })
 
 breakMode.addEventListener('click', function () {
@@ -136,10 +119,8 @@ breakMode.addEventListener('click', function () {
     workReset()
     workMode.classList.remove('active')
     breakMode.classList.add('active')
-    // clearInterval(startTimer)
-    // startTimer = undefined
-    // start.innerHTML = '<i class="fa fa-solid fa-play"></i>'
-    // timerSec.textContent = '00'
+    switchColour()
+
 })
 // Functions
 function workReset() {
@@ -149,6 +130,8 @@ function workReset() {
     startTimer = undefined
     start.innerHTML = '<i class="fa fa-solid fa-play"></i>'
     timerSec.textContent = '00'
+    document.body.classList.remove('switch-colour-blue')
+    document.body.classList.add('switch-colour-red')
 }
 
 
@@ -163,12 +146,15 @@ function timer() {
         timerMin.textContent = `0${timerMin.textContent}`
     }
     if (remainSeconds == -1 && backCounter != 0) {
+        audio.play()
         alert('Good Work, You deserve a break!')
         remainSeconds = breakLTime * 60
         backCounter--;
         workMode.classList.remove('active')
         breakMode.classList.add('active')
+        switchColour()
     } else if (remainSeconds == -1 && backCounter == 0) {
+        audio.play()
         remainSeconds = pomoLTime
         breakMode.classList.remove('active')
         workMode.classList.add('active')
@@ -181,6 +167,35 @@ function timer() {
         counter++;
     }
 }
+
+function soundPlay() {
+    switch (soundChoice.value) {
+        case 'rooster':
+            audio = new Audio('../../assets/sounds/rooster-crow.mp3')
+            audio.play()
+            break;
+        case 'alarm':
+            audio = new Audio('../../assets/sounds/alarm.mp3')
+            audio.play()
+            break;
+        case 'short-alarm':
+            audio = new Audio('../../assets/sounds/short-alarm.mp3')
+            audio.play()
+            break;
+        case 'sci-alarm':
+            audio = new Audio('../../assets/sounds/sci-alarm.mp3')
+            audio.play()
+            break;
+    }
+
+}
+
+function switchColour() {
+    document.body.classList.remove('switch-colour-red')
+    document.body.classList.add('switch-colour-blue')
+}
+
+
 
 
 
@@ -202,7 +217,7 @@ taskFilter.addEventListener('change', filterTask)
 // Functions
 function addTask(e) {
     e.preventDefault();
-    if (taskInput.value !== '') { 
+    if (taskInput.value !== '') {
         const taskDiv = document.createElement('div')
         taskDiv.classList.add('task')
         // create task Li
@@ -228,34 +243,6 @@ function addTask(e) {
         // clear value
         taskInput.value = ""
     }
-    
-    // create task div
-    // const taskDiv = document.createElement('div')
-    // taskDiv.classList.add('task')
-    // // create task Li
-    // const newTask = document.createElement('li')
-    // newTask.innerText = taskInput.value
-    // taskDiv.appendChild(newTask)
-    // // add task to local Storage
-    // saveLocalTasks(taskInput.value)
-    // // add finish button
-    // const finishedButton = document.createElement('button')
-    // finishedButton.innerHTML = '<i class="fas fa-check"></i>'
-    // finishedButton.classList.add('finish-btn')
-    // taskDiv.appendChild(finishedButton)
-
-    // // add delete button
-    // const deleteButton = document.createElement('button')
-    // deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>'
-    // deleteButton.classList.add('delete-btn')
-    // taskDiv.appendChild(deleteButton)
-    // // append to list
-    // taskList.appendChild(taskDiv)
-
-    // // clear value
-    // taskInput.value = ""
-
-
 
 }
 console.log(localStorage)

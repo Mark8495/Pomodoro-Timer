@@ -4,9 +4,12 @@
     padding: 0;
     box-sizing: border-box;
 }
-
-body {
+.switch-colour-red {
     background-image: linear-gradient(110deg, red, orange);
+    height: 100vh;
+}
+.switch-colour-blue{
+    background-image: linear-gradient(110deg, blue, green);
     height: 100vh;
 }
 
@@ -71,7 +74,7 @@ h2 {
     /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 60%;
     /* Could be more or less, depending on screen size */
     text-align: center;
     font-size: 1.2rem;
@@ -100,6 +103,13 @@ h2 {
 #pomoLength {
     box-sizing: border-box;
     font-size: 150%;
+}
+
+#sounds{
+    color: black;
+    font-size: 120%;
+    width: 15rem;
+    text-align: center;
 }
 
 /* Input stylings W3 */
@@ -142,6 +152,7 @@ input[type=number] {
     float: left;
     list-style-type: none;
     margin-left: 20%;
+    cursor: pointer;
 }
 
 .timer {
@@ -177,14 +188,21 @@ input[type=number] {
 }
 
 .active {
-    border-bottom: 1px solid black;
-    background-color: #888;
+    border-bottom: 2px solid black;
 }
 
 .mode:hover {
-    background-color: #aaa;
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
+#workMode:hover{
+    background-color: red;
+    border-radius: 7px;
+}
+#breakMode:hover{
+    background-color: blue;
+    border-radius: 7px;
+}
+
 
 .hide {
     display: none;
@@ -327,11 +345,23 @@ select{
     background:white;
     color: red;
 }
+
+
+/* Media Queries */
 @media (max-width: 500px) {
     .select{
         display: none;
     }
     h1{
         letter-spacing: 1px;
+    }
+    #mode{
+        font-size: 110%;
+    }
+    .mode{
+        margin-right: 35px;
+    }
+    #sounds{
+        width: 10rem;
     }
 }
