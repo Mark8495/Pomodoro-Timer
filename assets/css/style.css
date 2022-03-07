@@ -43,6 +43,10 @@ h2 {
     letter-spacing: 4px;
 }
 
+header h1 a{
+    text-decoration: none;
+    color: black;
+}
 
 
 
@@ -352,10 +356,13 @@ select{
     .task-list{
         width: 400px;
     }
+    h1{
+        letter-spacing: 2px;
+    }
 }
 
 
-@media (max-width: 500px) {
+@media (max-width: 400px) {
     .select{
         display: none;
     }

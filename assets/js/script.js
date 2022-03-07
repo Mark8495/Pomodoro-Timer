@@ -47,7 +47,7 @@ let breakLTime = 5
 let counter = 1;
 let backCounter = 1;
 let remainSeconds = 5
-let audio = new Audio('../../assets/sounds/rooster-crow.mp3')
+let audio = new Audio('https://assets.mixkit.co/sfx/download/mixkit-classic-alarm-995.wav')
 
 
 // event Listeners
@@ -170,20 +170,21 @@ function timer() {
 
 function soundPlay() {
     switch (soundChoice.value) {
+        // Sounds taken from Mixkit.com
         case 'rooster':
-            audio = new Audio('../../assets/sounds/rooster-crow.mp3')
+            audio = new Audio('https://assets.mixkit.co/sfx/download/mixkit-rooster-crowing-in-the-morning-2462.wav')
             audio.play()
             break;
         case 'alarm':
-            audio = new Audio('../../assets/sounds/alarm.mp3')
+            audio = new Audio('https://assets.mixkit.co/sfx/download/mixkit-classic-alarm-995.wav')
             audio.play()
             break;
         case 'short-alarm':
-            audio = new Audio('../../assets/sounds/short-alarm.mp3')
+            audio = new Audio('https://assets.mixkit.co/sfx/download/mixkit-classic-short-alarm-993.wav')
             audio.play()
             break;
         case 'sci-alarm':
-            audio = new Audio('../../assets/sounds/sci-alarm.mp3')
+            audio = new Audio('https://assets.mixkit.co/sfx/download/mixkit-space-shooter-alarm-1002.wav')
             audio.play()
             break;
     }
