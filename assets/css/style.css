@@ -448,6 +448,7 @@ select{
     }
     form{
         min-height: 5vh;
+        margin-top: 10px;
     }
     .btn{
         margin-left: 45px;
@@ -460,5 +461,6 @@ select{
         padding-left: 12px;
         padding-right: 0;
     }
+    
 }
 
