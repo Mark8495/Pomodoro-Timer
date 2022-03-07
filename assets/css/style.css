@@ -372,7 +372,7 @@ select{
         width: 300px;
         max-width: 100%;
         margin: auto;
-        font-size: 800%;
+        font-size: 700%;
         text-align: center;
         margin: 0;
         margin-left: 30px;
@@ -390,7 +390,7 @@ select{
     #mode{
         font-size: 110%;
     }
-    #mode{
+    .mode{
         margin-right: 35px;
     }
     #sounds{
@@ -401,6 +401,7 @@ select{
     }
     i {
         font-size: 140%;
+        margin-right: 15px;
     }
     #pomo-container{
         width: 350px;
@@ -419,16 +420,25 @@ select{
         justify-content: left;
         align-items: left;
     }
+    .buttons{
+        align-items: center;
+        justify-content: center;
+    }
+    .btn{
+        font-size: 100%;
+        padding: 20px 25px;
+        
+    }
+    .btn i{
+        margin: 0;
+    }
     
     
 }
 @media(max-width: 350px){
     .timer{
-        width: 200px;
-        font-size: 700%;
-    }
-    .btn{
-        margin-left: 50px;
+        width: 250px;
+        font-size: 600%;
     }
     header{
         height: 9vh;
@@ -436,8 +446,19 @@ select{
     header h2{
         float: left;
     }
-    body{
-        width: 100%;
+    form{
+        min-height: 5vh;
+    }
+    .btn{
+        margin-left: 45px;
+    }
+    .task-input,.task-button{
+        font-size: 1rem;
+        
+    }
+    .task-button{
+        padding-left: 12px;
+        padding-right: 0;
     }
 }
 
