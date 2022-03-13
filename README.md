@@ -39,17 +39,17 @@ Tasks are saved so they always know what needs to be done.
 # Website Structure
 
 ## Wireframes
-I used the website Figam to create the wireframe.
+I used the website Figma to create the wireframe.
 
 ### Colours
-
+I wanted a clear difference between the colors of the website while it was in work mode and while it was in break mode.
 ### Fonts
 
 [Table of Contents](#Contents)
 
 ---
 # Features
-
+There were several essential features I wanted for this project. A variable timer being chief among them. Along with the timer, I also wanted a good
 ## Navigation Bar
 
 ## Pomodoro Timer
@@ -60,11 +60,33 @@ I used the website Figam to create the wireframe.
 
 
 # Technologies
+### HTML5
+* As a structure language.
 
+### CSS
+* As a style language.
+
+### JavaScript
+* As a language to add functionality to the Website.
+
+### Font Awesome
+* As an icon library for a social links.
+
+### Google fonts
+* As a font resource.
+
+### GitHub
+* As a software hosting platform to keep project in a remote location.
+
+### Git
+* As a version-control system tracking.
+
+### Gitpod
+* As a development hosting platform.
 
 
 # Testing
-
+I have put the website through W3's html and css validators, returning no errors. As well as running my javascript code through JSHint
 
 # Credits
 
