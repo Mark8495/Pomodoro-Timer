@@ -26,7 +26,7 @@ window.onclick = function (event) {
 }
 
 
-// Pomodoro Timer
+// ---------------------------------------Pomodoro Timer
 // selectors
 let startButton = document.getElementsByClassName('startButton')
 let start = document.getElementById('start')
@@ -51,6 +51,7 @@ let audio = new Audio('https://assets.mixkit.co/sfx/download/mixkit-classic-alar
 
 
 // event Listeners
+// When user clicks the start button
 start.addEventListener('click', function () {
 
     if (startTimer === undefined) {
@@ -67,6 +68,7 @@ start.addEventListener('click', function () {
 
 soundChoice.addEventListener('change', soundPlay)
 
+// When user clicks on the + button for the work timer
 pomoButton.addEventListener('click', function () {
     pomoLTime = pomoL.value
     if (pomoLTime < 1 || pomoLTime > 60) {
@@ -82,7 +84,7 @@ pomoButton.addEventListener('click', function () {
     }
     workReset()
 })
-
+// When user clicks on the + button for the break timer
 breakButton.addEventListener('click', function () {
     breakLTime = breakL.value
     if (breakLTime < 5 || breakLTime > 60) {
@@ -94,7 +96,7 @@ breakButton.addEventListener('click', function () {
     workReset()
     timerMin.textContent = pomoLTime
 })
-
+// When the user clicks on the reset button
 reset.addEventListener('click', function () {
     timerMin.textContent = pomoLTime
     if (timerMin.textContent <= 9) {
@@ -104,6 +106,8 @@ reset.addEventListener('click', function () {
     remainSeconds = pomoLTime * 60
     workReset()
 })
+
+// When the user clicks on the work header
 workMode.addEventListener('click', function () {
     remainSeconds = pomoLTime * 60
     timerMin.textContent = pomoLTime
@@ -113,7 +117,7 @@ workMode.addEventListener('click', function () {
     workReset()
 
 })
-
+// When the user clicks on the break header
 breakMode.addEventListener('click', function () {
     remainSeconds = breakLTime * 60
     timerMin.textContent = breakLTime
@@ -126,8 +130,14 @@ breakMode.addEventListener('click', function () {
     switchColour()
 
 })
+
+
+
+
 // Functions
+// Reset Function
 function workReset() {
+    // Resets everything to default
     breakMode.classList.remove('active')
     workMode.classList.add('active')
     clearInterval(startTimer)
@@ -140,7 +150,7 @@ function workReset() {
     document.getElementById('mode').classList.remove('font-white')
 }
 
-
+// Main function for the timer
 function timer() {
     timerSec.textContent = ((remainSeconds % 60))
     timerMin.textContent = Math.floor(remainSeconds / 60)
@@ -179,7 +189,7 @@ function timer() {
         counter++;
     }
 }
-
+// function to play alarm sounds
 function soundPlay() {
     switch (soundChoice.value) {
         // Sounds taken from Mixkit.com
@@ -206,7 +216,7 @@ function soundPlay() {
     }
 
 }
-
+// function to switch colors of background and timer
 function switchColour() {
     document.body.classList.remove('switch-colour-red')
     document.body.classList.add('switch-colour-blue')

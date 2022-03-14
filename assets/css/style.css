@@ -21,6 +21,7 @@
 header h1 {
     float: left;
     margin: 0;
+    margin-left: 20px;
 }
 
 header h2 {
@@ -76,8 +77,8 @@ header h1 a{
 
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto;
-    /* 15% from the top and centered */
+    margin: 5% auto;
+    /* 5% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
     width: 60%;
