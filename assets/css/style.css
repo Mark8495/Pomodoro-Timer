@@ -13,7 +13,9 @@
     height: 100vh;
 }
 
-
+.font-white{
+    color: white;
+}
 
 /* Header */
 header h1 {
@@ -337,7 +339,8 @@ select{
     color: red;
     width: 10rem;
     cursor: pointer;
-    padding: 1rem;
+    padding: 0.4rem;
+    font-size: 1.7rem;
 }
 .select::after {
     content: "\25BC";
@@ -377,6 +380,7 @@ select{
         margin: 0;
         margin-left: 30px;
     }
+    
     .select{
         display: none;
     }

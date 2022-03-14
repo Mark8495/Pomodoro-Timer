@@ -46,7 +46,7 @@ let pomoLTime = 25
 let breakLTime = 5
 let counter = 1;
 let backCounter = 1;
-let remainSeconds = 5
+let remainSeconds = pomoLTime * 60
 let audio = new Audio('https://assets.mixkit.co/sfx/download/mixkit-classic-alarm-995.wav')
 
 
@@ -69,12 +69,14 @@ soundChoice.addEventListener('change', soundPlay)
 
 pomoButton.addEventListener('click', function () {
     pomoLTime = pomoL.value
-    if (pomoLTime < 5 || pomoLTime > 60) {
+    if (pomoLTime < 1 || pomoLTime > 60) {
         alert('Time length not valid, Please input a time between 5 and 60')
         pomoLTime = 25
     }
-    remainSeconds = (pomoLTime * 60) - 1
+    remainSeconds = (pomoLTime * 60) 
     timerMin.textContent = pomoLTime
+    pomoL.value = '';
+    pomoL.placeholder = pomoLTime
     if (timerMin.textContent <= 9) {
         timerMin.textContent = `0${timerMin.textContent}`
     }
@@ -87,6 +89,8 @@ breakButton.addEventListener('click', function () {
         alert('Time length not valid, Please input a time between 5 and 60')
         breakLTime = 5
     }
+    breakL.value = ''
+    breakL.placeholder = breakLTime
     workReset()
     timerMin.textContent = pomoLTime
 })
@@ -132,6 +136,8 @@ function workReset() {
     timerSec.textContent = '00'
     document.body.classList.remove('switch-colour-blue')
     document.body.classList.add('switch-colour-red')
+    document.getElementById('timerP').classList.remove('font-white')
+    document.getElementById('mode').classList.remove('font-white')
 }
 
 
@@ -146,6 +152,7 @@ function timer() {
         timerMin.textContent = `0${timerMin.textContent}`
     }
     if (remainSeconds == -1 && backCounter != 0) {
+        timerSec.textContent = '00'
         audio.play()
         alert('Good Work, You deserve a break!')
         remainSeconds = breakLTime * 60
@@ -154,8 +161,9 @@ function timer() {
         breakMode.classList.add('active')
         switchColour()
     } else if (remainSeconds == -1 && backCounter == 0) {
+        timerSec.textContent = '00'
         audio.play()
-        remainSeconds = pomoLTime
+        remainSeconds = (pomoLTime * 60) 
         breakMode.classList.remove('active')
         workMode.classList.add('active')
         backCounter++;
@@ -164,6 +172,10 @@ function timer() {
         } else {
             alert(`You have finished ${counter} cycles. Keep going you are doing great!`)
         }
+        document.body.classList.remove('switch-colour-blue')
+        document.body.classList.add('switch-colour-red')
+        document.getElementById('timerP').classList.remove('font-white')
+        document.getElementById('mode').classList.remove('font-white')
         counter++;
     }
 }
@@ -172,18 +184,22 @@ function soundPlay() {
     switch (soundChoice.value) {
         // Sounds taken from Mixkit.com
         case 'rooster':
+            audio.pause()
             audio = new Audio('https://assets.mixkit.co/sfx/download/mixkit-rooster-crowing-in-the-morning-2462.wav')
             audio.play()
             break;
         case 'alarm':
+            audio.pause()
             audio = new Audio('https://assets.mixkit.co/sfx/download/mixkit-classic-alarm-995.wav')
             audio.play()
             break;
         case 'short-alarm':
+            audio.pause()
             audio = new Audio('https://assets.mixkit.co/sfx/download/mixkit-classic-short-alarm-993.wav')
             audio.play()
             break;
         case 'sci-alarm':
+            audio.pause()
             audio = new Audio('https://assets.mixkit.co/sfx/download/mixkit-space-shooter-alarm-1002.wav')
             audio.play()
             break;
@@ -194,6 +210,8 @@ function soundPlay() {
 function switchColour() {
     document.body.classList.remove('switch-colour-red')
     document.body.classList.add('switch-colour-blue')
+    document.getElementById('timerP').classList.add('font-white')
+    document.getElementById('mode').classList.add('font-white')
 }
 
 
@@ -201,7 +219,11 @@ function switchColour() {
 
 
 
-// Task List
+// --------------------------------------- Task List
+
+
+
+
 // Selectors
 
 const taskInput = document.querySelector('.task-input')

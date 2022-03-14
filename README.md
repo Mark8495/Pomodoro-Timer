@@ -88,6 +88,9 @@ There were several essential features I wanted for this project. A variable time
 # Testing
 I have put the website through W3's html and css validators, returning no errors. As well as running my javascript code through JSHint
 
+Bugs:
+input letters in safari
+
 # Credits
 
 
