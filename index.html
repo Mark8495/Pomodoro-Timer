@@ -26,9 +26,9 @@
             <hr>
             <h2>Pomodoro Timer</h2>
             <input id="pomoLength" type="number" min="5" max="60" placeholder="25">
-            <button id="submitPomoL" class="modalBtn"><i class="fa fal fa-plus"></i></button>
+            <button aria-label='Submit Work timer length.' id="submitPomoL" class="modalBtn"><i class="fa fal fa-plus"></i></button>
             <h2>Break Timer</h2>
-            <input id="breakLength" type="number" min="5" max="60" placeholder="5">
+            <input aria-label='Submit break timer length' id="breakLength" type="number" min="5" max="60" placeholder="5">
             <button id="submitBreakL" class="modalBtn"><i class="fa fal fa-plus"></i></button>
             <p>Warning: Any changes will reset the timer!</p>
             <h2>Choose your Alarm:</h2>
@@ -64,9 +64,9 @@
         
         <div id="buttons">
             <!-- start and stop button -->
-            <button id="start" class="btn"><i class="fa fa-solid fa-play"></i></button>
+            <button aria-label='Start and stop Timer'id="start" class="btn"><i class="fa fa-solid fa-play"></i></button>
             <!-- reset Button -->
-            <button id="reset" class="btn"><i class="fas fa-redo"></i></button>
+            <button aria-label='Reset Timer' id="reset" class="btn"><i class="fas fa-redo"></i></button>
         </div>
     </div>
 
@@ -74,7 +74,7 @@
         <h1>Task List</h1>
         <form>
             <input type="text" class="task-input" maxlength="50">
-            <button class="task-button" type="submit"><i class="fas fa-plus-circle"></i></button>
+            <button aria-label='add task' class="task-button" type="submit"><i class="fas fa-plus-circle"></i></button>
             <div class="select">
                 <select name="tasks" class="filter-tasks">
                     <option value="all">All</option>

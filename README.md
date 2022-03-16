@@ -23,18 +23,20 @@ You can view the live site here
 The goal of the website is to make a space where you can work in peace and efficently with sufficent breaks between work time. It also has the ability to allow users to track their tasks so they know exactly what they are doing and what they need to do next.
 
 ### User Goals:
-User is able to set timer for their preferred work and break time.
-User can easily add and manage their Tasks that they need to complete.
+- User is able to set timer for their preferred work and break time.
+- User can easily add and manage their Tasks that they need to complete.
 
 ### Returning User Goals:
-Users have a record of what times they like to use for easier setup.
-Tasks are saved so they always know what needs to be done.
+- Users have a record of what times they like to use for easier setup.
+- Tasks are saved so they always know what needs to be done.
 
 ## User Stories:
 
 ### As a new user:
-
+* I wish to be able to set timers to be able to clear plan out when I will be working and when I will be taking a break in a given time period.
+* I want the ability to note down what tasks I have to do, and have the ability to mark when they are complete and delete them.
 ### As a returning User
+* I want to be able to return to website knowing what tasks I still have left from the previous session.
 
 # Website Structure
 
@@ -54,9 +56,15 @@ There were several essential features I wanted for this project. A variable time
 
 ## Pomodoro Timer
 
+
+I wanted the timer to be the main feauture for the website, as using one has always been a method of working that has been beneficial for me. Having the ability to set what time you want was also an essential edition.
+
+
 ## Tasks
+The task list is a handy addition to the pomodor timer page. With it you can keep track of any tasks you might have. Keeping the data locally so as long as you don't delete the task it will always stick around.
 
 ## Footer
+
 
 
 # Technologies
