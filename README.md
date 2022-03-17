@@ -52,18 +52,30 @@ I wanted a clear difference between the colors of the website while it was in wo
 ---
 # Features
 There were several essential features I wanted for this project. A variable timer being chief among them. Along with the timer, I also wanted a good
+
 ## Navigation Bar
+![Navigation Bar](assets/readme-images/NavBar.png)
+
+I wanted the navigation bar to be simple and easy to use, the name of the website and a settings button was all that I needed to add to provide full functionality of the nav bar. Clicking the settings icon will open up a modal that provides all the options you might need to change the Timer.
 
 ## Pomodoro Timer
-
-
+![Work mode](assets/readme-images/WorkMode.png)
 I wanted the timer to be the main feauture for the website, as using one has always been a method of working that has been beneficial for me. Having the ability to set what time you want was also an essential edition.
 
 
+## Break Mode
+![Break Mode](assets/readme-images/breakMode.png)
+After work has been complete I want their to be a stark difference between the site whether the timer is being used as a break countdown. The color change to a calming blue and green
+
+
 ## Tasks
+![Task List](assets/readme-images/TaskList.png)
 The task list is a handy addition to the pomodor timer page. With it you can keep track of any tasks you might have. Keeping the data locally so as long as you don't delete the task it will always stick around.
 
-## Footer
+## Media Changes
+![Phone Design](#)
+
+There were only minor changes needed for the site to be functional on all screen sizes. To make the most out of the screen space I removed the ability to filter tasks for a cleaner layout on the mobile.
 
 
 
@@ -96,8 +108,13 @@ The task list is a handy addition to the pomodor timer page. With it you can kee
 # Testing
 I have put the website through W3's html and css validators, returning no errors. As well as running my javascript code through JSHint
 
-Bugs:
-input letters in safari
+<hr>
+
+## Issues found during site development.
+### Input issues with settings in the Safari Browser.
+
+In the Safari browser, number inputs still allowed the user to input other characters. 
+To fix this I removed all characters inputted after the button for the timers settings was clicked, along with an alert if the input didn't equal what is required. 
 
 # Credits
 
