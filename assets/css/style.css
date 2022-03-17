@@ -31,7 +31,7 @@ header h2 {
 }
 
 header {
-    height: 5vh;
+    height: 45px;
     border-bottom: 2px solid black;
 }
 
@@ -148,7 +148,7 @@ input[type=number] {
 #mode {
     font-size: 130%;
     letter-spacing: 2px;
-    height: 6vh;
+    height: 60px;
     width: 400px;
     max-width: 100%;
     line-height: 40px;
@@ -446,7 +446,7 @@ select{
         font-size: 600%;
     }
     header{
-        height: 9vh;
+        height: 70px;
     }
     header h2{
         float: left;
@@ -466,6 +466,11 @@ select{
         padding-left: 12px;
         padding-right: 0;
     }
-    
+    #mode li{
+        margin-left: 40px;
+    }
+    #mode{
+        height: 30px;
+    }
 }
 
