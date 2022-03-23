@@ -2,9 +2,9 @@
 Pomodor Timer is space where you can make the best use of your own time. A completely variable alternating timer that makes sure you have the breaks you need while still ensuring you get your work done.
 This project is for educational purposes. My main aim is to build a responive Website using HTML, CSS and Javascript.
 
-responsive design put here
+![responsive Design](assets/readme-images/responsive.png)
 
-You can view the live site here
+## [View life website in github pages](https://mark8495.github.io/CI-Project-Portfolio-2/)
 
 ---
 
@@ -73,7 +73,7 @@ After work has been complete I want their to be a stark difference between the s
 The task list is a handy addition to the pomodor timer page. With it you can keep track of any tasks you might have. Keeping the data locally so as long as you don't delete the task it will always stick around.
 
 ## Media Changes
-![Phone Design](#)
+![Phone Design](assets/readme-images/Phone.jpeg)
 
 There were only minor changes needed for the site to be functional on all screen sizes. To make the most out of the screen space I removed the ability to filter tasks for a cleaner layout on the mobile.
 
@@ -108,6 +108,10 @@ There were only minor changes needed for the site to be functional on all screen
 # Testing
 I have put the website through W3's html and css validators, returning no errors. As well as running my javascript code through JSHint
 
+
+
+I have also run the website through google's lighthouse testing.
+![Google Lighthouse](assets/readme-images/lighthouse.png)
 <hr>
 
 ## Issues found during site development.
@@ -117,7 +121,9 @@ In the Safari browser, number inputs still allowed the user to input other chara
 To fix this I removed all characters inputted after the button for the timers settings was clicked, along with an alert if the input didn't equal what is required. 
 
 # Credits
-
+https://www.w3schools.com/howto/howto_css_modals.asp
+https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp
+https://mixkit.co/free-sound-effects/alarm/
 
 
 
