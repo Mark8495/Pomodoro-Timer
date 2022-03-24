@@ -41,6 +41,7 @@
                 <option value="sci-alarm">Future Alarm</option>
             </select>
             <hr>
+            <!-- Task information -->
             <h2>Task List</h2>
             <p>Click the plus sign, or press enter to add your task.</p>
             <p>To show your task is completed. Click on the checkmark. To remove the task just click the trash icon.</p>
@@ -50,7 +51,7 @@
         </div>
     </div>
     <div id="pomo-container">
-        <!-- Timer Mode -->
+        <!-- Timer Modes -->
         <div id="mode">
             <ul>
                 <li id='workMode' class="active mode">Work</li>
@@ -72,10 +73,12 @@
 
     <div class="task-list-container">
         <h1>Task List</h1>
+        <!-- task input -->
         <form>
             <input type="text" class="task-input" maxlength="50">
             <button aria-label='add task' class="task-button" type="submit"><i class="fas fa-plus-circle"></i></button>
             <div class="select">
+                <!-- filter tasks -->
                 <select name="tasks" class="filter-tasks">
                     <option value="all">All</option>
                     <option value="done">Finished</option>
@@ -83,6 +86,7 @@
                 </select>
             </div>
         </form>
+        <!-- task container -->
         <div class="task-container">
             <ul class="task-list">
 

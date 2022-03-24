@@ -71,7 +71,7 @@ soundChoice.addEventListener('change', soundPlay)
 // When user clicks on the + button for the work timer
 pomoButton.addEventListener('click', function () {
     pomoLTime = pomoL.value
-    if (pomoLTime < 1 || pomoLTime > 60) {
+    if (pomoLTime < 5 || pomoLTime > 60) {
         alert('Time length not valid, Please input a time between 5 and 60')
         pomoLTime = 25
     }
@@ -280,6 +280,7 @@ function addTask(e) {
 }
 console.log(localStorage)
 
+// delete task function
 function deleteCheck(e) {
     const item = e.target
     if (item.classList[0] === 'delete-btn') {
@@ -298,6 +299,7 @@ function deleteCheck(e) {
     }
 }
 
+// filter task function
 function filterTask(e) {
     const tasks = taskList.childNodes;
     tasks.forEach(function (task) {
@@ -326,6 +328,7 @@ function filterTask(e) {
     })
 }
 
+// save local task to storage
 function saveLocalTasks(task) {
     // check if old tasks
     let tasks
@@ -339,6 +342,7 @@ function saveLocalTasks(task) {
 
 }
 
+// retrieves tasks from storage
 function getTasks() {
     let tasks
     if (localStorage.getItem('tasks') === null) {
@@ -371,7 +375,7 @@ function getTasks() {
     })
 
 }
-
+// removes the tasks from local storage
 function removelocaltask(task) {
     let tasks
     if (localStorage.getItem('tasks') === null) {
