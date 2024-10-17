@@ -1,4 +1,4 @@
-# **_Pomodoro Timer - Project Portfolio 2 - Javascript essentials_**
+# **_Pomodoro Timer - Javascript essentials_**
 Pomodor Timer is space where you can make the best use of your own time. A completely variable alternating timer that makes sure you have the breaks you need while still ensuring you get your work done.
 This project is for educational purposes. My main aim is to build a responive Website using HTML, CSS and Javascript.
 
